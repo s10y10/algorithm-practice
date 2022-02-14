@@ -6,6 +6,6 @@ const { BinaryTree } = require("./BinaryTree");
 module.exports = {
   arrayToList,
   Stack,
-  BinaryTree,
   MinStack,
+  BinaryTree,
 };
