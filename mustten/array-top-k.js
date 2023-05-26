@@ -6,6 +6,7 @@ function arrayTopk(arr, k) {
 }
 
 function quickSort(arr, start, end, k) {
+  console.log({ arr, start, end, k });
   if (start > end) return;
   let left = start;
   let right = end;
@@ -33,4 +34,4 @@ function quickSort(arr, start, end, k) {
   }
 }
 
-console.log(arrayTopk([1, 2, 5, 3, 9, 8, 6, 7, 4], 4));
+console.log(arrayTopk([4, 5, 2, 1, 3, 8, 9, 7, 6], 4));
