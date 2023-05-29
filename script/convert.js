@@ -9,7 +9,12 @@ function getRequireTestStatement() {
   const requireStatement = t.variableDeclaration('const', [
     t.variableDeclarator(
       t.objectPattern([
-        t.objectProperty(t.identifier('test'), t.identifier('test')),
+        t.objectProperty(
+          t.identifier('test'),
+          t.identifier('test'),
+          false,
+          true
+        ),
       ]),
       t.callExpression(t.identifier('require'), [
         t.stringLiteral('./tools/test'),
@@ -56,9 +61,14 @@ async function convertFile(filename) {
   // 插入require('test')语句
   if (!hasRequireTest && functionNames.length) {
     const requireStatement = getRequireTestStatement();
+    // requireStatement.loc = {
+    //   start: { line: 12, column: 0 },
+    //   end: { line: 13, column: 0 },
+    // };
     const body = ast.program.body;
     body.splice(0, 0, requireStatement);
 
+    //插入test执行语句
     for (let i = 0; i < inputValues.length; i++) {
       const expressionStatement = t.expressionStatement(
         t.callExpression(t.identifier('test'), [
