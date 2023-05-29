@@ -6,6 +6,8 @@
 
 //输出：11
 
+const { test } = require('./tools/test');
+
 function minimumPathSum(arr) {
   const dp = [];
   const len = arr.length;
@@ -17,8 +19,4 @@ function minimumPathSum(arr) {
   return dp[0];
 }
 
-const inputValue = [[2], [3, 4], [6, 5, 7], [4, 1, 8, 3]];
-console.time('a');
-const result = minimumPathSum(inputValue);
-console.timeEnd('a');
-console.log(result);
+test(minimumPathSum, [[2], [3, 4], [6, 5, 7], [4, 1, 8, 3]]);

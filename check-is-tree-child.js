@@ -2,10 +2,11 @@
 
 // B 是 A 的子结构， 即 A 中有出现和B相同的结构和节点值
 
-const { BinaryTree } = require("./tools/export");
+const { BinaryTree } = require('./tools/export');
+const { test } = require('./tools/test');
 
 function isChildStructure(tree1, tree2, type) {
-  console.log("|||", type, "---", tree1, "---", tree2);
+  console.log('|||', type, '---', tree1, '---', tree2);
   if (!tree2) {
     return true;
   }
@@ -20,7 +21,7 @@ function isChildStructure(tree1, tree2, type) {
 }
 
 function checkIsTreeChild(tree1, tree2, type) {
-  console.log("???", type, "---", tree1, "---", tree2);
+  console.log('???', type, '---', tree1, '---', tree2);
   if (!tree1 || !tree2) return false;
   return (
     isChildStructure(tree1, tree2, 1) ||
@@ -31,9 +32,4 @@ function checkIsTreeChild(tree1, tree2, type) {
 
 const inputValue1 = new BinaryTree([3, 4, 5, 1, 2]);
 const inputValue2 = new BinaryTree([3, 4, null, null, 2]);
-console.log(JSON.stringify(inputValue1));
-console.log(JSON.stringify(inputValue2));
-console.time("a");
-const result = checkIsTreeChild(inputValue1.root, inputValue2.root, 1);
-console.timeEnd("a");
-console.log(result);
+test(checkIsTreeChild, inputValue1.root, inputValue2.root, 1);

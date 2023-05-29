@@ -11,7 +11,8 @@
 //    15   7
 // 返回它的最大深度 3 。
 
-const { BinaryTree } = require("./tools/export");
+const { BinaryTree } = require('./tools/export');
+const { test } = require('./tools/test');
 
 function binaryTreeDeep(node) {
   if (!node) return 0;
@@ -22,7 +23,4 @@ function binaryTreeDeep(node) {
 }
 
 const inputValue1 = new BinaryTree([3, 9, 20, null, null, 15, 7]);
-console.time("a");
-const result1 = binaryTreeDeep(inputValue1.root, 3);
-console.timeEnd("a");
-console.log(result1);
+test(binaryTreeDeep, inputValue1.root);

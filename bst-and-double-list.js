@@ -14,7 +14,8 @@
 
 // 还需要返回链表中的第一个节点的指针。
 
-const { BinaryTree } = require("./tools/export");
+const { BinaryTree } = require('./tools/export');
+const { test } = require('./tools/test');
 
 let preNode;
 let headNode;
@@ -39,7 +40,4 @@ function bstAndDoubleList(node) {
 }
 
 const inputValue1 = new BinaryTree([4, 2, 5, 1, 3]);
-console.time("a");
-const result1 = bstAndDoubleList(inputValue1.root);
-console.timeEnd("a");
-console.log(result1);
+test(bstAndDoubleList, inputValue1.root);
