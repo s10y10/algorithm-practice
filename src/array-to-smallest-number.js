@@ -8,7 +8,7 @@
 // 输入: [3,30,34,5,9]
 // 输出: "3033459"
 
-const { test } = require('./tools/test');
+const { test } = require('../tools/test');
 
 function arrayToSmallestNumber(arr) {
   if (arr.length <= 1) return arr;
