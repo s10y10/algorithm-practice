@@ -4,8 +4,7 @@
 
 // 一个二叉树每个节点 的左右两个子树的高度差的绝对值不超过 1
 
-const { BinaryTree } = require('./tools/export');
-const { test } = require('./tools/test');
+const { BinaryTree } = require("./tools/export");
 
 function balanceBinaryTree(node) {
   if (!node || !node.val) return 0;
@@ -39,5 +38,7 @@ const inputValue1 = new BinaryTree([
   null,
   5,
 ]);
-
-test(balanceBinaryTree, inputValue1.root);
+console.time("a");
+const result1 = balanceBinaryTree(inputValue1.root) !== false;
+console.timeEnd("a");
+console.log(result1);

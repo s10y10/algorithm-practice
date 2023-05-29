@@ -8,8 +8,6 @@
 // 输入: [3,30,34,5,9]
 // 输出: "3033459"
 
-const { test } = require('../tools/test');
-
 function arrayToSmallestNumber(arr) {
   if (arr.length <= 1) return arr;
   const left = [];
@@ -29,5 +27,11 @@ function arrayToSmallestNumber(arr) {
     .concat(arrayToSmallestNumber(right));
 }
 
-test(arrayToSmallestNumber, [10, 2]);
-test(arrayToSmallestNumber, [3, 30, 34, 5, 9]);
+const inputValue1 = [10, 2];
+const inputValue2 = [3, 30, 34, 5, 9];
+console.time('a');
+const result1 = arrayToSmallestNumber(inputValue1).join('');
+const result2 = arrayToSmallestNumber(inputValue2).join('');
+console.timeEnd('a');
+console.log(result1);
+console.log(result2);

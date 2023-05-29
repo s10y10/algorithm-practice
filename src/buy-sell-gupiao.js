@@ -17,8 +17,6 @@
 // 输出：0
 // 解释：在这种情况下, 没有交易完成, 所以最大利润为 0。
 
-const { test } = require('./tools/test');
-
 function buySellGupiao(prices) {
   let minPrices = prices[0];
   const dp = [0];
@@ -29,5 +27,9 @@ function buySellGupiao(prices) {
   return Math.max(...dp);
 }
 
-test(buySellGupiao, [7, 1, 5, 3, 6, 4]);
-test(buySellGupiao, [7, 6, 4, 3, 1]);
+console.time("a");
+const result1 = buySellGupiao([7, 1, 5, 3, 6, 4]);
+const result2 = buySellGupiao([7, 6, 4, 3, 1]);
+console.timeEnd("a");
+console.log(result1);
+console.log(result2);

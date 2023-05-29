@@ -14,8 +14,6 @@
 // 输入：target = 11, nums = [1,1,1,1,1,1,1,1]
 // 输出：0
 
-const { test } = require('./tools/test');
-
 function biggerSubArray(nums, target) {
   let left = 0;
   let result = nums.length + 1;
@@ -31,6 +29,11 @@ function biggerSubArray(nums, target) {
   return result === nums.length + 1 ? 0 : result;
 }
 
-test(biggerSubArray, [2, 3, 1, 2, 4, 3], 7);
-test(biggerSubArray, [1, 4, 4], 4);
-test(biggerSubArray, [1, 1, 1, 1, 1, 1, 1, 1], 11);
+console.time("a");
+const result1 = biggerSubArray([2, 3, 1, 2, 4, 3], 7);
+const result2 = biggerSubArray([1, 4, 4], 4);
+const result3 = biggerSubArray([1, 1, 1, 1, 1, 1, 1, 1], 11);
+console.timeEnd("a");
+console.log(result1);
+console.log(result2);
+console.log(result3);

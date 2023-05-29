@@ -17,8 +17,6 @@
 // 输入: [1,3,2,6,5]
 // 输出: true
 
-const { test } = require('./tools/test');
-
 function checkIsSearchTree(arr, start, end) {
   if (start >= end) return true;
   const root = arr[end];
@@ -44,5 +42,11 @@ function checkLRDArrayIsBinarySearchTree(arr) {
   return checkIsSearchTree(arr, 0, arr.length - 1);
 }
 
-test(checkLRDArrayIsBinarySearchTree, [1, 6, 3, 2, 5]);
-test(checkLRDArrayIsBinarySearchTree, [1, 3, 2, 6, 5]);
+const inputValue1 = [1, 6, 3, 2, 5];
+const inputValue2 = [1, 3, 2, 6, 5];
+console.time("a");
+const result1 = checkLRDArrayIsBinarySearchTree(inputValue1);
+const result2 = checkLRDArrayIsBinarySearchTree(inputValue2);
+console.timeEnd("a");
+console.log(result1);
+console.log(result2);

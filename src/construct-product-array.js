@@ -8,8 +8,6 @@
 // 输入: [1,2,3,4,5]
 // 输出: [120,60,40,30,24]
 
-const { test } = require('./tools/test');
-
 function constructProductArray(arr) {
   const len = arr.length;
   const leftArr = new Array(len);
@@ -31,4 +29,8 @@ function constructProductArray(arr) {
   return result;
 }
 
-test(constructProductArray, [1, 2, 3, 4, 5]);
+const inputValue1 = [1, 2, 3, 4, 5];
+console.time("a");
+const result1 = constructProductArray(inputValue1);
+console.timeEnd("a");
+console.log(result1);
