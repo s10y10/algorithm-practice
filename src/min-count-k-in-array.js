@@ -1,14 +1,12 @@
 // 输入整数数组 arr ，找出其中最小的 k 个数。例如，输入 4、5、1、6、2、7、3、8 这 8 个数字，则
 // 最小的 4 个数字是 1、2、3、4 。
-
 // 示例 1：
 // 输入：arr = [3,2,1], k = 2
 // 输出：[1,2] 或者 [2,1]
-
 // 示例 2：
 // 输入：arr = [0,1,2,1], k = 1
 // 输出：[0]
-
+const { test } = require('./tools/test');
 function minCountKInArray(arr, k) {
   if (arr.length <= 1) return arr;
   const midIdx = Math.floor(arr.length / 2);
@@ -34,15 +32,9 @@ function minCountKInArray(arr, k) {
       .concat(minCountKInArray(right, k - left.length - 1));
   }
 }
-
 const inputValue1 = [3, 2, 1];
 const inputValue2 = [0, 1, 2, 1];
 const inputValue3 = [4, 5, 1, 6, 2, 7, 3, 8];
-console.time("a");
-const result1 = minCountKInArray(inputValue1, 2);
-const result2 = minCountKInArray(inputValue2, 1);
-const result3 = minCountKInArray(inputValue3, 4);
-console.timeEnd("a");
-console.log(result1);
-console.log(result2);
-console.log(result3);
+test(minCountKInArray, inputValue1, 2);
+test(minCountKInArray, inputValue2, 1);
+test(minCountKInArray, inputValue3, 4);

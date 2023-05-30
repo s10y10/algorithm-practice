@@ -50,23 +50,35 @@ async function convertFile(filename) {
       }
     },
     VariableDeclarator(path) {
-      if (path.node.id.name.includes('input')) {
-        inputValues.push(path.node.id.name);
-      } else if (path.node.id.name.includes('result')) {
-        path.remove();
+      if (path.node.id.name) {
+        if (path.node.id.name.includes('input')) {
+          inputValues.push(path.node.id.name);
+        } else if (path.node.id.name.includes('result')) {
+          path.remove();
+        }
       }
     },
   });
 
+  if (hasRequireTest) {
+    console.log('completed', filename);
+  }
+
   // 插入require('test')语句
   if (!hasRequireTest && functionNames.length) {
-    const requireStatement = getRequireTestStatement();
-    // requireStatement.loc = {
-    //   start: { line: 12, column: 0 },
-    //   end: { line: 13, column: 0 },
-    // };
     const body = ast.program.body;
-    body.splice(0, 0, requireStatement);
+    const requireStatement = getRequireTestStatement();
+    traverse(ast, {
+      enter(path) {
+        if (path.node.leadingComments) {
+          const comments = path.node.leadingComments;
+          t.removeComments(path.node);
+          path.insertBefore(requireStatement);
+          t.addComments(requireStatement, 'leading', comments);
+          path.stop();
+        }
+      },
+    });
 
     //插入test执行语句
     for (let i = 0; i < inputValues.length; i++) {
@@ -81,7 +93,7 @@ async function convertFile(filename) {
 
     // 生成修改后代码
     const newCode = generate(ast).code;
-    await fsp.writeFile(`${filename}-convert.js`, newCode);
+    await fsp.writeFile(`${filename}`, newCode);
   }
 }
 
@@ -93,8 +105,11 @@ async function convert() {
     const stats = await fsp.stat(filePath);
     const isDir = stats.isDirectory();
     if (!isDir) {
-      await convertFile(filePath);
-      break;
+      try {
+        await convertFile(filePath);
+      } catch (e) {
+        console.log(filePath, e);
+      }
     }
   }
 }

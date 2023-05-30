@@ -1,11 +1,8 @@
 // 给定一个二叉树，判断它是否是高度平衡的二叉树。
-
 // 本题中，一棵高度平衡二叉树定义为：
-
 // 一个二叉树每个节点 的左右两个子树的高度差的绝对值不超过 1
-
-const { BinaryTree } = require("./tools/export");
-
+const { test } = require('./tools/test');
+const { BinaryTree } = require('./tools/export');
 function balanceBinaryTree(node) {
   if (!node || !node.val) return 0;
   const left = balanceBinaryTree(node.left);
@@ -19,7 +16,6 @@ function balanceBinaryTree(node) {
     return Math.max(left, right) + 1;
   }
 }
-
 const inputValue1 = new BinaryTree([
   1,
   2,
@@ -37,8 +33,5 @@ const inputValue1 = new BinaryTree([
   null,
   null,
   5,
-]);
-console.time("a");
-const result1 = balanceBinaryTree(inputValue1.root) !== false;
-console.timeEnd("a");
-console.log(result1);
+]).root;
+test(balanceBinaryTree, inputValue1);

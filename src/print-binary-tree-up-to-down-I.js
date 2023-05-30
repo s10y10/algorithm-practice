@@ -1,20 +1,15 @@
 // 从上到下打印出二叉树的每个节点，同一层的节点按照从左到右的顺序打印。
-
 // 例如: 给定二叉树: [3,9,20,null,null,15,7],
-
 //   3
 //    / \
 //   9  20
 //     /  \
 //    15   7
 // 返回：
-
 // [3,9,20,15,7]
-
-const { BinaryTree } = require("./tools/export");
-
+const { test } = require('./tools/test');
+const { BinaryTree } = require('./tools/export');
 function printBinaryTreeUpToDownI(node) {
-  const result = [];
   if (!node) return result;
   if (node.val) {
     result.push(node.val);
@@ -25,7 +20,6 @@ function printBinaryTreeUpToDownI(node) {
   );
   return result;
 }
-
 function printUseDataStruckture(root) {
   const result = [];
   const queue = [root];
@@ -43,11 +37,5 @@ function printUseDataStruckture(root) {
   }
   return result;
 }
-
-const inputValue1 = new BinaryTree([3, 9, 20, null, null, 15, 7]);
-console.time("a");
-const result1 = printBinaryTreeUpToDownI(inputValue1.root);
-const result2 = printUseDataStruckture(inputValue1.root);
-console.timeEnd("a");
-console.log(result1);
-console.log(result2);
+const inputValue1 = new BinaryTree([3, 9, 20, null, null, 15, 7]).root;
+test(printUseDataStruckture, inputValue1);

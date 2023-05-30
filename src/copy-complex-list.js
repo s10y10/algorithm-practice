@@ -1,14 +1,15 @@
 // 请实现 copyRandomList 函数，复制一个复杂链表。在复杂链表中，每个节点除了有一个 next 指针
 // 指向下一个节点，还有一个 random 指针指向链表中的任意节点或者 null。
-
 // 示例 1：
 // 复杂链表的复制
-
 // 输入：head = [[7,null],[13,0],[11,4],[10,2],[1,0]]
 // 输出：[[7,null],[13,0],[11,4],[10,2],[1,0]]
-
-const { arrayToList } = require("./tools/export");
-
+const {
+  test
+} = require("./tools/test");
+const {
+  arrayToList
+} = require("./tools/export");
 function copyComplexList(list) {
   const map = new Map();
   let cur = list;
@@ -17,11 +18,12 @@ function copyComplexList(list) {
     const tempVal = cur.val;
     cur.val = tempVal[0];
     cur.random = tempVal[1];
-    map.set(cur, { val: cur.val });
+    map.set(cur, {
+      val: cur.val
+    });
     cur = cur.next;
     index++;
   }
-  console.log(JSON.stringify(list));
   cur = list;
   while (cur) {
     const newNode = map.get(cur);
@@ -32,15 +34,5 @@ function copyComplexList(list) {
   }
   return map.get(list);
 }
-
-const inputValue1 = arrayToList([
-  [7, null],
-  [13, 0],
-  [11, 4],
-  [10, 2],
-  [1, 0],
-]);
-console.time("a");
-const result1 = copyComplexList(inputValue1);
-console.timeEnd("a");
-console.log(JSON.stringify(result1));
+const inputValue1 = arrayToList([[7, null], [13, 0], [11, 4], [10, 2], [1, 0]]);
+test(copyComplexList, inputValue1);

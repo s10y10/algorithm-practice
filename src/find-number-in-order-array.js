@@ -1,14 +1,17 @@
 // 统计一个数字在排序数组中出现的次数。
-
 // 示例 1:
 // 输入: nums = [5,7,7,8,8,10], target = 8
 // 输出: 2
-
 // 示例 2:
 // 输入: nums = [5,7,7,8,8,10], target = 6
 // 输出: 0
-
-function findNumberInOrderArray({ nums, target }) {
+const {
+  test
+} = require("./tools/test");
+function findNumberInOrderArray({
+  nums,
+  target
+}) {
   let left = 0;
   let right = nums.length - 1;
   let mid;
@@ -47,12 +50,13 @@ function findNumberInOrderArray({ nums, target }) {
     return 0;
   }
 }
-
-const inputValue1 = { nums: [5, 7, 7, 8, 8, 10], target: 8 };
-const inputValue2 = { nums: [5, 7, 7, 8, 8, 10], target: 6 };
-console.time("a");
-const result1 = findNumberInOrderArray(inputValue1);
-const result2 = findNumberInOrderArray(inputValue2);
-console.timeEnd("a");
-console.log(result1);
-console.log(result2);
+const inputValue1 = {
+  nums: [5, 7, 7, 8, 8, 10],
+  target: 8
+};
+const inputValue2 = {
+  nums: [5, 7, 7, 8, 8, 10],
+  target: 6
+};
+test(findNumberInOrderArray, inputValue1);
+test(findNumberInOrderArray, inputValue2);

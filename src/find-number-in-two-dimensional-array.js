@@ -11,7 +11,7 @@
 //   ]
 //   给定 target = 5，返回 true。
 //   给定 target = 20，返回 false。
-
+const { test } = require('./tools/test');
 function findNumberInTwoDimensionalArray(arr, target) {
   let i = arr.length - 1;
   let j = 0;
@@ -26,7 +26,6 @@ function findNumberInTwoDimensionalArray(arr, target) {
   }
   return false;
 }
-
 const inputValue = [
   [1, 4, 7, 11, 15],
   [2, 5, 8, 12, 19],
@@ -34,9 +33,5 @@ const inputValue = [
   [10, 13, 14, 17, 24],
   [18, 21, 23, 26, 30],
 ];
-console.time("a");
-const result5 = findNumberInTwoDimensionalArray(inputValue, 5);
-const result20 = findNumberInTwoDimensionalArray(inputValue, 20);
-console.timeEnd("a");
-console.log(result5);
-console.log(result20);
+test(findNumberInTwoDimensionalArray, inputValue, 5);
+test(findNumberInTwoDimensionalArray, inputValue, 20);

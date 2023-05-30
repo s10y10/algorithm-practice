@@ -4,9 +4,8 @@
 //   2     4
 // 1
 // k=3
-
-const { BinaryTree } = require("./tools/export");
-
+const { test } = require('./tools/test');
+const { BinaryTree } = require('./tools/export');
 function kBiggerNodeInBST(node, k) {
   let result;
   function printNode(node) {
@@ -24,9 +23,5 @@ function kBiggerNodeInBST(node, k) {
   printNode(node);
   return result;
 }
-
-const inputValue1 = new BinaryTree([5, 3, 6, 2, 4, null, null, 1]);
-console.time("a");
-const result1 = kBiggerNodeInBST(inputValue1.root, 3);
-console.timeEnd("a");
-console.log(result1);
+const inputValue1 = new BinaryTree([5, 3, 6, 2, 4, null, null, 1]).root;
+test(kBiggerNodeInBST, inputValue1, 3);

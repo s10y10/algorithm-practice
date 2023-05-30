@@ -5,7 +5,9 @@
 // 输入：
 // [2, 3, 1, 0, 2, 5, 3]
 // 输出：2 或 3
-
+const {
+  test
+} = require("./tools/test");
 function findRepeatNumberInArray(arr) {
   const set = new Set();
   for (let i = 0; i < arr.length; i++) {
@@ -16,9 +18,5 @@ function findRepeatNumberInArray(arr) {
   }
   return null;
 }
-
 const inputValue = [2, 3, 1, 0, 2, 5, 3];
-console.time("a");
-const result = findRepeatNumberInArray(inputValue);
-console.timeEnd("a");
-console.log(result);
+test(findRepeatNumberInArray, inputValue);

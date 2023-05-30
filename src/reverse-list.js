@@ -1,7 +1,10 @@
 // 给你单链表的头节点 head ，请你反转链表，并返回反转后的链表。
-
-const { arrayToList } = require("./tools/export");
-
+const {
+  test
+} = require("./tools/test");
+const {
+  arrayToList
+} = require("./tools/export");
 function reverseList(list) {
   let currentNode = list;
   let nextNode = list.next;
@@ -14,9 +17,5 @@ function reverseList(list) {
   }
   return currentNode;
 }
-
 const inputValue = arrayToList([1, 2, 3, 4, 5]);
-console.time("a");
-const result = reverseList(inputValue);
-console.timeEnd("a");
-console.log(JSON.stringify(result));
+test(reverseList, inputValue);

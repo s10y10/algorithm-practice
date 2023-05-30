@@ -6,11 +6,11 @@ function execFunc(cmd) {
   return new Promise((resolve) => {
     exec(cmd, (error, stdout, stderr) => {
       if (error) {
-        console.log(' \x1b[31m', `error: ${error.message}`);
+        console.log('\x1b[31m', `error: ${error.message}`);
         return;
       }
       if (stderr) {
-        console.log(' \x1b[31m', `stderr: ${stderr}`);
+        console.log('\x1b[31m', `stderr: ${stderr}`);
         return;
       }
       console.log('\x1b[32m', `stdout:\n${stdout}`);

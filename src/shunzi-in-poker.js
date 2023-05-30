@@ -1,17 +1,15 @@
 // 从若干副扑克牌中随机抽 5 张牌，判断是不是一个顺子，即这 5 张牌是不是连续的。
-
 // 2 ～ 10 为数字本身，A 为 1 ，J 为 11 ，Q 为 12 ，K 为 13 ，而大、小王为 0 ，可以看成任意数字。
-
 // A 不能视为 14。
-
 // 示例 1:
 // 输入: [1,2,3,4,5]
 // 输出: True
-
 // 示例 2:
 // 输入: [0,0,1,2,5]
 // 输出: True
-
+const {
+  test
+} = require("./tools/test");
 function shunziInPoker(arr) {
   const set = new Set();
   let min = 14;
@@ -32,12 +30,7 @@ function shunziInPoker(arr) {
   }
   return max - min < 5;
 }
-
 const inputValue1 = [1, 2, 3, 4, 5];
 const inputValue2 = [0, 0, 1, 2, 5];
-console.time("a");
-const result1 = shunziInPoker(inputValue1);
-const result2 = shunziInPoker(inputValue2);
-console.timeEnd("a");
-console.log(result1);
-console.log(result2);
+test(shunziInPoker, inputValue1);
+test(shunziInPoker, inputValue2);
