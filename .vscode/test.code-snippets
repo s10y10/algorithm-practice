@@ -1,0 +1,16 @@
+{
+  "Create a new Test": {
+    "prefix": "ttt",
+    "body": [
+      "const { test } = require('./tools/test');",
+      "",
+      "function $1(){",
+      "",
+      "}",
+      "",
+      "const inputValue = [];",
+      "test($1,inputValue)"
+    ],
+    "description": "Create a new Test"
+  }
+}
