@@ -12,6 +12,9 @@ function Stack() {
   this.top = function () {
     return this.data[0];
   };
+  this.bottom = function () {
+    return this.data[this.data.length - 1];
+  };
 }
 
 module.exports = {
