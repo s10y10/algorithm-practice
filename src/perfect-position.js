@@ -23,16 +23,30 @@ const { test } = require('./tools/test');
 
 function perfectPosition(s) {
   const countDic = { A: 0, S: 0, D: 0, W: 0 };
-  for (let char of s) {
+  for (const char of s) {
     countDic[char]++;
   }
-  const ad = Math.abs(countDic['A'] - countDic['D']);
-  const sw = Math.abs(countDic['S'] - countDic['W']);
-
-  return (ad + sw) / 2;
+  const needCount = s.length / 4;
+  let res = 0;
+  for (const char in countDic) {
+    while (countDic[char] != needCount) {
+      if (countDic[char] > needCount) {
+        countDic[char]--;
+        res += 2;
+      } else {
+        countDic[char]++;
+        res -= 1;
+      }
+    }
+  }
+  return res;
 }
 
 const inputValue1 = 'ASDW'; //0
 const inputValue2 = 'AASW'; //1
+const inputValue3 = 'AAAA'; //3
+const inputValue4 = 'AAAAADDD'; //4
 test(perfectPosition, inputValue1);
 test(perfectPosition, inputValue2);
+test(perfectPosition, inputValue3);
+test(perfectPosition, inputValue4);
