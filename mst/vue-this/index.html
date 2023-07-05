@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      class Vue {
+        constructor({ data, methods }) {
+          this.$data = data;
+          this.$methods = methods;
+          this.proxyMethods();
+          this.proxyData();
+        }
+
+        fnBind(fn, target) {
+          return fn.bind(target);
+        }
+
+        proxyMethods() {
+          for (let k in this.$methods) {
+            this[k] = this.fnBind(this.$methods[k], this);
+          }
+        }
+
+        observer(target, key, val) {
+          Object.defineProperty(target, key, {
+            get() {
+              return val;
+            },
+            writable: true,
+            enumerable: true,
+            configurable: true,
+          });
+        }
+
+        proxyData() {
+          for (let k in this.$data) {
+            this.observer(this, k, this.$data[k]);
+          }
+        }
+      }
+
+      const vm = new Vue({
+        data: {
+          name: "my name",
+        },
+        methods: {
+          sayName() {
+            console.log(this.name);
+          },
+        },
+      });
+      console.log(vm.name);
+      console.log(vm.sayName());
+    </script>
+  </body>
+</html>

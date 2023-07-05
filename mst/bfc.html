@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      ul,
+      li {
+        list-style: none;
+      }
+      .tab {
+        width: 400px;
+      }
+      .tabHd {
+        margin-bottom: -1px;
+        padding: 0 10px 0 0;
+        border: 1px solid #6c92ad;
+        border-bottom: none;
+        background: #eaf0fd;
+        height: 28px;
+      }
+      .tabList {
+        float: left;
+        margin-left: -1px;
+        padding: 0 15px;
+        line-height: 28px;
+        border-left: 1px solid #6c92ad;
+        border-right: 1px solid #6c92ad;
+        color: #005590;
+        text-align: center;
+      }
+      .tabList.current {
+        position: relative;
+        background: #fff;
+      }
+      .tabBd {
+        border: 1px solid #6c92ad;
+      }
+      .tabBd .roundBox {
+        padding: 15px;
+      }
+      .tabContent {
+        display: none;
+      }
+      .tabContent.current {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="tab" class="tab">
+      <ul class="tabHd">
+        <li class="tabList current">tab 1</li>
+        <li class="tabList">tab 2</li>
+        <li class="tabList">tab 3</li>
+        <li class="tabList">tab 4</li>
+      </ul>
+      <div class="tabBd">
+        <div class="roundBox">
+          <div class="tabContent current">选项内容1</div>
+          <div class="tabContent">选项内容2</div>
+          <div class="tabContent">选项内容3</div>
+          <div class="tabContent">选项内容4</div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

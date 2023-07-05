@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //获取图片的Blob值
+      function getImageBlob(url, cb) {
+        var xhr = new XMLHttpRequest();
+        xhr.open("get", url, true);
+        xhr.responseType = "blob";
+        xhr.onload = function () {
+          if (this.status == 200) {
+            if (cb) cb(this.response);
+          }
+        };
+        xhr.send();
+      }
+      getImageBlob("./imgs/img1.png", function (blob) {
+        const img = document.createElement("img");
+        img.src = URL.createObjectURL(blob);
+        document.body.appendChild(img);
+        img.onload = function (e) {
+          URL.revokeObjectURL(this.src);
+        };
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      html,
+      body {
+        height: 100%;
+        width: 100%;
+        overflow: hidden;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas
+      id="c"
+      width="800"
+      height="600"
+      style="border: 1px solid #ccc"
+    ></canvas>
+    <script>
+      const c = document.getElementById("c");
+      const ctx = c.getContext("2d");
+      ctx.lineWidth = 10;
+      ctx.strokeStyle = "pink";
+      ctx.lineCap = "round";
+      ctx.moveTo(100, 100);
+      ctx.lineTo(200, 100);
+      ctx.stroke();
+
+      ctx.beginPath();
+      ctx.strokeStyle = "red";
+      ctx.moveTo(100, 200);
+      ctx.lineTo(200, 200);
+      ctx.stroke();
+
+      ctx.beginPath();
+      ctx.lineWidth = 4;
+      ctx.strokeStyle = "black";
+      ctx.moveTo(100, 140);
+      ctx.lineTo(100, 160);
+      ctx.lineTo(200, 160);
+      ctx.lineTo(200, 140);
+      ctx.closePath();
+      ctx.stroke();
+
+      ctx.strokeStyle = "green";
+      ctx.strokeRect(210, 210, 80, 60);
+      ctx.fillStyle = "yellow";
+      ctx.fillRect(210, 210, 80, 60);
+
+      ctx.beginPath();
+      ctx.arc(300, 100, 50, (60 * Math.PI) / 180, (240 * Math.PI) / 180);
+      ctx.closePath();
+      ctx.stroke();
+    </script>
+  </body>
+</html>
